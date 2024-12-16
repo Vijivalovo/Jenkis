@@ -29,7 +29,7 @@ class ApiError extends Error
     {
         return new ApiError(401, 'Недостаточно прав');
     }
-
+    //test
     static CnotBf(message, errors = [])
     {
         return new ApiError(402, message, errors);

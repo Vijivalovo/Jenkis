@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Клонирование нужной ветки
-                git branch: env.BRANCH_NAME, url: 'git@github.com:<username>/<repo>.git'
+                git branch: env.BRANCH_NAME, url: 'git@github.com:Vijivalovo/Jenkis.git'
             }
         }
 
@@ -38,21 +38,21 @@ pipeline {
             }
         }
 
-        stage('Start Frontend') {
-            steps {
-                sh 'npm run dev'
-            }
-        }
+        // stage('Start Frontend') {
+        //     steps {
+        //         sh 'npm run dev'
+        //     }
+        // }
 
-        stage('Deploy') {
-            when {
-                branch 'main'
-            }
-            steps {
-                echo 'Deploy to production server...'
-                // Здесь вы можете добавить команды для деплоя
-            }
-        }
+        // stage('Deploy') {
+        //     when {
+        //         branch 'main'
+        //     }
+        //     steps {
+        //         echo 'Deploy to production server...'
+        //         // Здесь вы можете добавить команды для деплоя
+        //     }
+        // }
     }
 
     post {
