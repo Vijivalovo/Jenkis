@@ -1,0 +1,905 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "User API",
+    "description": "API for managing users",
+    "version": "1.0.0"
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "role": {
+            "type": "boolean"
+          },
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "patronymic": {
+            "type": "string"
+          },
+          "datebirth": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "password": {
+            "type": "integer"
+          },
+          "numSlot": {
+            "type": "integer"
+          },
+          "earned": {
+            "type": "integer"
+          },
+          "wallet": {
+            "type": "integer"
+          }
+        }
+      },
+      "Bit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "bit": {
+            "type": "integer"
+          },
+          "timeBit": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Slot": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "category": {
+            "type": "string"
+          },
+          "minPrice": {
+            "type": "integer"
+          },
+          "redemtionPrice": {
+            "type": "integer"
+          },
+          "saleTime": {
+            "type": "integer"
+          },
+          "bidStep": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "char"
+          }
+        }
+      },
+      "Select": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Auction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "startTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Sold": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "soldPrice": {
+            "type": "integer"
+          },
+          "dateSale": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/users/registration": {
+      "post": {
+        "summary": "Registration users",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successlfu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "Login user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User after login",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/logout": {
+      "post": {
+        "summary": "Logout user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Logout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/createUser": {
+      "post": {
+        "summary": "Create user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "create",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/updateUser/{id}": {
+      "post": {
+        "summary": "Update user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "update",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/findById/{id}": {
+      "get": {
+        "summary": "find user by id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "findOne",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/list": {
+      "get": {
+        "summary": "list all users",
+        "responses": {
+          "200": {
+            "description": "list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/delete": {
+      "delete": {
+        "summary": "Delete user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "delete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slots/createSlot": {
+      "post": {
+        "summary": "Create slots",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Slot"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "create",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Slot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slots/updateSlot": {
+      "post": {
+        "summary": "Update slot",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Slot"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "update",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Slot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slots/findSlot/{id}": {
+      "get": {
+        "summary": "Find one slot",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "findOne",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Slot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slots/listSlots": {
+      "get": {
+        "summary": "List all Slots",
+        "responses": {
+          "200": {
+            "description": "list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Slot"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/slots/deleteSlot": {
+      "delete": {
+        "summary": "delete slot",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Slot"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "delete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Slot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bits/createBit": {
+      "post": {
+        "summary": "Create bit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Bit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "create",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bits/buySlotAlready": {
+      "post": {
+        "summary": "Buy bit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Bit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Buy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bits/findBit/{id}": {
+      "get": {
+        "summary": "find one bit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "findOne",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bits/listBits": {
+      "get": {
+        "summary": "List all Bits",
+        "responses": {
+          "200": {
+            "description": "findAll",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Bit"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bits/delete": {
+      "delete": {
+        "summary": "Delete bit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Bit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "delete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Bit"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auctions/createAuction": {
+      "post": {
+        "summary": "Create Auction",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auction"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "create",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auctions/findAuction/{id}": {
+      "get": {
+        "summary": "Find one auction",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "findOne",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auction/listAuctions": {
+      "get": {
+        "summary": "List all Auctions",
+        "responses": {
+          "200": {
+            "description": "findAll",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auction/deleteAuction": {
+      "delete": {
+        "summary": "Delete auction",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auction"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "delete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/selects/createSelect": {
+      "post": {
+        "summary": "Create selects",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Select"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "create",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Select"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/selects/findSelectById/{id}": {
+      "get": {
+        "summary": "Find one select",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "findOne",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Select"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/select/listSelects": {
+      "get": {
+        "summary": "List all selects",
+        "responses": {
+          "200": {
+            "description": "findAll",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Select"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/select/delete": {
+      "delete": {
+        "summary": "Delete select",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Select"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "delete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Select"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/solds/createSold": {
+      "post": {
+        "summary": "Create solds",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Sold"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "create",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sold"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/solds/findSold/{id}": {
+      "get": {
+        "summary": "find one sold",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "findOne",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sold"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/solds/listSolds": {
+      "get": {
+        "summary": "List all Solds",
+        "responses": {
+          "200": {
+            "description": "findAll",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Sold"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/solds/deleteSold": {
+      "delete": {
+        "summary": "Delete sold",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Sold"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "delete",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sold"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
