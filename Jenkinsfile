@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS' // Имя, указанное в настройках Jenkins
+        nodejs 'NodeJs' // Имя, указанное в настройках Jenkins
     }
 
     environment {
