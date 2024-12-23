@@ -20,6 +20,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
+                dir('backend')
                 bat 'npm list'
             }
         }
@@ -28,12 +29,14 @@ pipeline {
 
        stage('Lint and Test') {
             steps {
+                dir('backend')
                  bat 'npm test'
              }
          }
 
          stage('Build Backend') {
              steps {
+                 dir('backend')
                  bat 'node app.jsx'
              }
          }
