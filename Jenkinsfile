@@ -18,7 +18,13 @@ pipeline {
             }
         }
 
-       
+       stage('Install Dependencies') {
+    steps {
+        dir('backend') {
+            bat 'npm install'
+        }
+    }
+}
 
        stage('Lint and Test') {
             steps {
