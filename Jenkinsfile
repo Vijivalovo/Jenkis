@@ -21,7 +21,9 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('backend') {
-                    bat 'npm list'
+                     bat 'npm config set fetch-timeout 60000'
+                    bat 'npm config set timeout 60000'
+                    bat 'npm install'
                 }
             }
         }
