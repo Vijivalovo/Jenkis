@@ -18,16 +18,6 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                dir('backend') {
-                     bat 'npm config set fetch-timeout 60000'
-                    bat 'npm config set timeout 60000'
-                    bat 'npm install'
-                }
-            }
-        }
-
        
 
        stage('Lint and Test') {
