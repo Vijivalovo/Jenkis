@@ -26,21 +26,17 @@ pipeline {
 
        
 
-        // stage('Start Frontend') {
-        //     steps {
-        //         sh 'npm run dev'
-        //     }
-        // }
+       stage('Lint and Test') {
+            steps {
+                 bat 'npm test'
+             }
+         }
 
-        // stage('Deploy') {
-        //     when {
-        //         branch 'main'
-        //     }
-        //     steps {
-        //         echo 'Deploy to production server...'
-        //         // Здесь вы можете добавить команды для деплоя
-        //     }
-        // }
+         stage('Build Backend') {
+             steps {
+                 bat 'node app.jsx'
+             }
+         }
     }
 
     post {
