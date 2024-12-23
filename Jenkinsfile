@@ -21,7 +21,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 dir('backend') {
-                    bat 'npm install'
+                    bat 'npm list'
                 }
             }
         }
