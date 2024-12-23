@@ -14,7 +14,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Клонирование нужной ветки
-                git branch: env.BRANCH_NAME, url: 'git@github.com:Vijivalovo/Jenkis.git'
+                git branch: 'main', url: 'git@github.com:Vijivalovo/Jenkis.git'
             }
         }
 
