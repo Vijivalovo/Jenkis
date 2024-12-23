@@ -11,7 +11,7 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout123') {
             steps {
                 // Клонирование нужной ветки
                 git branch: 'main', url: 'https://github.com/Vijivalovo/Jenkis.git'
@@ -24,19 +24,7 @@ pipeline {
             }
         }
 
-        stage('Lint and Test') {
-            steps {
-                // Если есть линтер или тесты
-                sh 'npm run lint || echo "No lint configured"'
-                sh 'npm test || echo "No tests configured"'
-            }
-        }
-
-        stage('Build Backend') {
-            steps {
-                sh 'node app.jsx'
-            }
-        }
+       
 
         // stage('Start Frontend') {
         //     steps {
