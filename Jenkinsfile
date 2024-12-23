@@ -20,7 +20,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                bat 'npm list'
+                bat 'cd .\backend\ ; npm list'
             }
         }
 
