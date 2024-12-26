@@ -22,6 +22,7 @@ pipeline {
     steps {
         dir('backend') {
             bat 'npm ci --include=dev'
+            bat 'npm install supertest --save-dev'
             bat 'npm list supertest'
             bat 'npm install supertest'
         }
@@ -30,9 +31,10 @@ pipeline {
 
        stage('Lint and Test') {
             steps {
-                dir('backend') {
+                 dir('backend') {
+                    bat 'npm ci --include=dev'
                     bat 'npm test'
-                }
+                    }
              }
          }
 
