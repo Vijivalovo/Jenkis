@@ -42,7 +42,7 @@ pipeline {
          stage('Build Backend') {
              steps {
                  dir('backend') {
-                    bat 'npm app.jsx'
+                    bat 'node app.jsx'
                 }
              }
          }
