@@ -23,8 +23,6 @@ pipeline {
         dir('backend') {
             bat 'npm -v'
             bat 'npm cache clean --force'
-            bat 'rmdir /s /q node_modules'
-            bat 'del package-lock.json'
             bat 'npm install'
             bat 'npm list supertest'
         }
