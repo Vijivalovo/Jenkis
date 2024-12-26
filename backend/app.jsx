@@ -27,7 +27,7 @@ app.use(errorMiddleware);
 
 //app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(resDocument));
 
-app.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`Server started at port ${PORT}`);
     console.log('Connection has been established successfully.');
 
