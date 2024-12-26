@@ -22,6 +22,8 @@ pipeline {
     steps {
         dir('backend') {
             bat 'npm ci'
+            bat 'npm list supertest'
+            bat 'npm install supertest'
         }
     }
 }
