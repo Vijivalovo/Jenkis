@@ -21,7 +21,7 @@ pipeline {
        stage('Install Dependencies') {
     steps {
         dir('backend') {
-            bat 'npm ci'
+            bat 'npm ci --include=dev'
             bat 'npm list supertest'
             bat 'npm install supertest'
         }
