@@ -1,21 +1,20 @@
 const sequelize = require("./sequelize");
 
-require("../models");
-
-
 class DataBase {
-  async connect() {
-    await sequelize.sync();
-    sequelize
-    .authenticate()
-    .then(() => {
-    console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-    console.error('Unable to connect to the database:', err);
-    });
-    console.log("DB connected");
-  }
+    async connect() {
+        if (!sequelize.connectionManager.pool) {
+            console.log("Re-establishing database connection...");
+        }
+
+        await sequelize.sync();
+        await sequelize.authenticate();
+        console.log("Connection has been established successfully.");
+    }
+
+    async close() {
+        console.log("Closing database connection.");
+        await sequelize.close();
+    }
 }
 
 module.exports = new DataBase();
