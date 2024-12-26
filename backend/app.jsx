@@ -27,7 +27,15 @@ app.use(errorMiddleware);
 
 //app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(resDocument));
 
-const server = app.listen(PORT, () => console.log(`Server started at port ${PORT}`));
+app.listen(port, () => {
+    console.log(`Server started at port ${PORT}`);
+    console.log('Connection has been established successfully.');
+
+    // Завершаем сервер через 10 секунд
+    setTimeout(() => {
+        console.log('Shutting down server...');
+        process.exit(0);  // Завершаем процесс
+    }, 10000);  // Ожидаем 10 секунд
 //app.listen(PORT, () => console.log(`Server started at port ${PORT}`));
 
 module.exports = { app, server };
