@@ -24,6 +24,7 @@ pipeline {
             bat 'npm -v'
             bat 'npm cache clean --force'
             bat 'npm install'
+            bat 'npm install supertest --save-dev'
             bat 'npm list supertest'
         }
     }
